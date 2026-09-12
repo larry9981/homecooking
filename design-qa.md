@@ -35,3 +35,8 @@ No actionable P0/P1/P2 mismatch remains. The initial browser pass found a blocki
 - P3: connect the current evidence model to authorized platform APIs and persistent pagination for production-scale records.
 
 final result: passed
+# 2026-09-12 交互回归
+
+- 通过：顶部“品牌监测 / 评论洞察 / 趋势分析 / 竞品对比”均可切换至对应视图。
+- 通过：左侧 11 个品牌均可切换；品牌名称、评论正文、问题标签、平台数量和原帖链接同步更新。
+- 通过：HexClad 定向回归，页面显示 12,806 条、品牌专属评论及“不粘衰减”等问题主题。
