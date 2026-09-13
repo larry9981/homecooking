@@ -62,3 +62,4 @@ final result: passed
 - 通过：下半部分继续显示评论渠道、产品品类筛选、评论详情和翻页。
 - 通过：从 All-Clad 切换 HexClad 后，上下两部分的品牌、类目和内容同时刷新。
 - 2026-09-13: Amazon Top 5 商品图已接入主页品牌视图和 Amazon 类目矩阵；本地验证每个类目显示 5 张图，品牌切换后图片同步更新。图片来自 Amazon 商品搜索结果 CDN，并对 Made In、Caraway、Our Place 做了标题品牌匹配复核。
+- 2026-09-13: 为主页与 Amazon 类目矩阵的每个 Top 5 产品新增 5 个核心流量词、自然搜索页码/位置及 Amazon 核验链接；验证 All-Clad 与 HexClad 品牌切换后关键词同步更新。排名明确标注为研究模型估算。
