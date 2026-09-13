@@ -61,3 +61,4 @@ final result: passed
 - 通过：品牌监测中间区上半部分显示当前品牌 Amazon 细分类目与当前类目 Top 5。
 - 通过：下半部分继续显示评论渠道、产品品类筛选、评论详情和翻页。
 - 通过：从 All-Clad 切换 HexClad 后，上下两部分的品牌、类目和内容同时刷新。
+- 2026-09-13: Amazon Top 5 商品图已接入主页品牌视图和 Amazon 类目矩阵；本地验证每个类目显示 5 张图，品牌切换后图片同步更新。图片来自 Amazon 商品搜索结果 CDN，并对 Made In、Caraway、Our Place 做了标题品牌匹配复核。
