@@ -17,7 +17,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,11 +27,12 @@ jobs:
       - run: npm install
       - run: npx playwright install --with-deps chromium
       - run: npm run collect:amazon-catalog
+      - run: npm run collect:amazon-keyword-ranks
       - run: npm run collect:amazon-ranks
       - name: Commit latest snapshot
         run: |
           git config user.name "amazon-rank-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add dist/data/amazon-catalog.json dist/data/amazon-ranks.json
+          git add dist/data/amazon-catalog.json dist/data/amazon-keyword-ranks.json dist/data/amazon-ranks.json
           git diff --cached --quiet || git commit -m "Update Amazon rank snapshot"
           git push

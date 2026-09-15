@@ -23,6 +23,8 @@ for(const [index,asin] of asins.entries()){
     const links=await page.locator('a').evaluateAll(nodes=>nodes.map(a=>({text:(a.textContent||'').trim(),href:a.href})).filter(x=>/^#[\d,]+\s+in\s+/i.test(x.text)));
     const ranks=[];
     for(const link of links){const m=link.text.match(/^#([\d,]+)\s+in\s+(.+)$/i);if(!m)continue;const rank=Number(m[1].replaceAll(',','')),category=m[2].replace(/\s*\(.*$/,'').trim(),nodeId=(link.href.match(/\/zgbs\/[^/]+\/(\d+)/)||[])[1]||null;if(!ranks.some(x=>x.category===category))ranks.push({category,rank,nodeId,url:link.href})}
+    const detailText=await page.locator('#detailBullets_feature_div, #productDetails_detailBullets_sections1, #productDetails_db_sections').allTextContents().catch(()=>[]);
+    for(const text of detailText)for(const match of text.matchAll(/#([\d,]+)\s+in\s+([^\n(]+)/gi)){const rank=Number(match[1].replaceAll(',','')),category=match[2].trim();if(category&&!ranks.some(x=>x.category===category))ranks.push({category,rank,nodeId:null,url:`https://www.amazon.com/dp/${asin}`})}
     const snapshot={date:today,ranks};
     const history=[...(prior.history||[]).filter(x=>x.date!==today),snapshot].slice(-30);
     previous.items[asin]={asin,title:title?.trim()||prior.title||asin,url:`https://www.amazon.com/dp/${asin}`,status:ranks.length?'ok':'no_rank_found',checkedAt:new Date().toISOString(),ranks,history};
