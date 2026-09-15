@@ -5,7 +5,8 @@
     "start": "node scripts/serve.mjs",
     "collect:amazon-catalog": "node scripts/discover-amazon-catalog.mjs",
     "collect:amazon-keyword-ranks": "node scripts/collect-amazon-keyword-ranks.mjs",
-    "collect:amazon-ranks": "node scripts/collect-amazon-ranks.mjs"
+    "collect:amazon-ranks": "node scripts/collect-amazon-ranks.mjs",
+    "build:amazon-node-catalog": "node scripts/build-amazon-node-catalog.mjs"
   },
   "engines": {"node": ">=20"},
   "devDependencies": {"playwright": "^1.55.0"}

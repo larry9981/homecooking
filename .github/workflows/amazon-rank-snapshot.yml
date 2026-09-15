@@ -27,12 +27,13 @@ jobs:
       - run: npm install
       - run: npx playwright install --with-deps chromium
       - run: npm run collect:amazon-catalog
-      - run: npm run collect:amazon-keyword-ranks
       - run: npm run collect:amazon-ranks
+      - run: npm run build:amazon-node-catalog
+      - run: npm run collect:amazon-keyword-ranks
       - name: Commit latest snapshot
         run: |
           git config user.name "amazon-rank-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add dist/data/amazon-catalog.json dist/data/amazon-keyword-ranks.json dist/data/amazon-ranks.json
+          git add dist/data/amazon-search-catalog.json dist/data/amazon-catalog.json dist/data/amazon-keyword-ranks.json dist/data/amazon-ranks.json
           git diff --cached --quiet || git commit -m "Update Amazon rank snapshot"
           git push

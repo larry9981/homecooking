@@ -5,7 +5,7 @@ const html=await readFile('dist/index.html','utf8');
 const block=html.match(/const AMZ_CATALOG_RAW=\{([\s\S]*?)\n\};/);
 if(!block)throw new Error('AMZ_CATALOG_RAW not found');
 let discovered=[];
-try{const catalog=JSON.parse(await readFile('dist/data/amazon-catalog.json','utf8'));discovered=Object.values(catalog.brands||{}).flatMap(b=>Object.values(b.categories||{})).flatMap(x=>x).map(x=>x.asin)}catch{}
+for(const path of['dist/data/amazon-search-catalog.json','dist/data/amazon-catalog.json'])try{const catalog=JSON.parse(await readFile(path,'utf8'));discovered.push(...Object.values(catalog.brands||{}).flatMap(b=>Object.values(b.categories||{})).flatMap(x=>x).map(x=>x.asin))}catch{}
 const asins=[...new Set([...block[1].matchAll(/([A-Z0-9]{10})\|/g)].map(x=>x[1]).concat(discovered))];
 const outputPath='dist/data/amazon-ranks.json';
 let previous={updatedAt:null,status:'waiting_first_collection',items:{}};
