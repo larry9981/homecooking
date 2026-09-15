@@ -3,6 +3,7 @@
   "type": "module",
   "scripts": {
     "start": "node scripts/serve.mjs",
+    "collect:amazon-catalog": "node scripts/discover-amazon-catalog.mjs",
     "collect:amazon-ranks": "node scripts/collect-amazon-ranks.mjs"
   },
   "engines": {"node": ">=20"},
