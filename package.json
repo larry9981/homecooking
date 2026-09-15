@@ -1,6 +1,10 @@
 {
   "private": true,
   "type": "module",
-  "scripts": {"collect:amazon-ranks": "node scripts/collect-amazon-ranks.mjs"},
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "collect:amazon-ranks": "node scripts/collect-amazon-ranks.mjs"
+  },
+  "engines": {"node": ">=20"},
   "devDependencies": {"playwright": "^1.55.0"}
 }
